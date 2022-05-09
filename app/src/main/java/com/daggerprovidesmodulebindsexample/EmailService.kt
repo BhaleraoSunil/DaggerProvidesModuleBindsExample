@@ -1,12 +1,24 @@
-package com.bpointer.userregdemowithoutdependencyapproach.fieldinjection
-
+package com.daggerprovidesmodulebindsexample
+import android.annotation.SuppressLint
 import android.util.Log
-import com.bpointer.userregdemowithoutdependencyapproach.ctor_injection.Utils.Companion.TAG2
+import com.daggerprovidesmodulebindsexample.Utils.Companion.TAG
 import javax.inject.Inject
 
-class EmailService @Inject constructor(){
+interface NotificationService{
+    fun send(from:String, to:String, emailBody:String)
+}
+class EmailService @Inject constructor():NotificationService{
 
-    fun send(from:String,to:String,emailBody:String){
-        Log.e(TAG2,"Email sent")
+    @SuppressLint("LongLogTag")
+    override fun send(from:String, to:String, emailBody:String){
+        Log.e(TAG,"Email sent")
+    }
+}
+
+class MessageService :NotificationService{
+
+    @SuppressLint("LongLogTag")
+    override fun send(from:String, to:String, emailBody:String){
+        Log.e(TAG,"Message sent")
     }
 }

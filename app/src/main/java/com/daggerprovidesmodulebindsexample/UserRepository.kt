@@ -1,12 +1,25 @@
-package com.bpointer.userregdemowithoutdependencyapproach.fieldinjection
+package com.daggerprovidesmodulebindsexample
 
+import android.annotation.SuppressLint
 import android.util.Log
-import com.bpointer.userregdemowithoutdependencyapproach.ctor_injection.Utils.Companion.TAG
-import com.bpointer.userregdemowithoutdependencyapproach.ctor_injection.Utils.Companion.TAG2
+import com.daggerprovidesmodulebindsexample.Utils.Companion.TAG
 import javax.inject.Inject
 
-class UserRepository @Inject constructor(){
-    fun saveUser(email:String,password:String){
-        Log.e(TAG2,"USer saved in db")
+interface UserRepository{
+    fun saveUser(email:String,password:String)
+}
+class SQLRepository @Inject constructor() :UserRepository{
+
+    @SuppressLint("LongLogTag")
+    override fun saveUser(email:String, password:String){
+        Log.e(TAG,"USer saved in db")
+    }
+}
+
+class FirebaseRepository  :UserRepository{
+
+    @SuppressLint("LongLogTag")
+    override fun saveUser(email:String, password:String){
+        Log.e(TAG,"USer saved in firebase")
     }
 }

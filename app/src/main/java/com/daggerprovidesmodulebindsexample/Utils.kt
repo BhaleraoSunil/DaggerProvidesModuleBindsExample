@@ -1,9 +1,8 @@
-package com.bpointer.userregdemowithoutdependencyapproach.ctor_injection
+package com.daggerprovidesmodulebindsexample
 
 class Utils {
     companion object {
-        const val TAG = "CtorInjDemoActivity"
-        const val TAG2 = "FieldInjDemoActivity"
+        const val TAG = "DaggerProvidesModuleBindsExample"
     }
 
 }
